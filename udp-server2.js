@@ -2,7 +2,7 @@ const dgram = require('dgram');
 const server = dgram.createSocket('udp4');
 const fs = require('fs');
 
-const PORT = 3101;
+const PORT = 3102;
 const IP = "127.0.0.1";
 
 var i = 0;
@@ -16,10 +16,10 @@ server.on('listening', () => {
   setInterval(sendImage, 20);
 });
 
-server.bind(3001);
+server.bind(3002);
 
 function sendImage() {
-	var name = "./image_dump/" + i.toString() + ".jpg";
+	var name = "./image_dump2/" + i.toString() + ".jpg";
 
 	var data = fs.readFileSync(name);
 	console.log('read file');
@@ -32,5 +32,5 @@ function sendImage() {
 			console.log('server sent' + i);
 	});
 	i++;
-	if(i == 343) i = 0;
+	if(i == 76) i = 0;
 }

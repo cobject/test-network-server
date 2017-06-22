@@ -8,7 +8,7 @@ var server = net.createServer(function(socket) {
 	socket.setNoDelay(true);
 	socket.on('data', function(data){
 		console.log("data = ", data);
-		socket.write("" + data + " ok");
+		socket.write("ok");
 	});
 });
 
@@ -16,4 +16,4 @@ function onData(data) {
 	console.log('onData()', data);
 }
 
-server.listen(3002, '127.0.0.1');
+server.listen(3000, '127.0.0.1');
