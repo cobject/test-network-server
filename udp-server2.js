@@ -14,6 +14,7 @@ server.on('error', (err) => {
 
 server.on('listening', () => {
   setInterval(sendImage, 20);
+  console.log('listening');
 });
 
 server.bind(3002);
@@ -22,14 +23,12 @@ function sendImage() {
 	var name = "./image_dump2/" + i.toString() + ".jpg";
 
 	var data = fs.readFileSync(name);
-	console.log('read file');
 
 	server.send(data, 0, data.length, PORT, IP, function(err, bytes) {
 			if (err) {
 				console.log('err');
 				throw err;
 			}
-			console.log('server sent' + i);
 	});
 	i++;
 	if(i == 76) i = 0;
